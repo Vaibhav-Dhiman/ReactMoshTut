@@ -5,7 +5,9 @@ class Counters extends React.Component {
     state = { 
         counters : [
             { id: 1, value: 0 },
-            { id: 2, value: 0 }
+            { id: 2, value: 0 },
+            { id: 3, value: 0 },
+            { id: 4, value: 0 }
         ]
      };
 
@@ -25,14 +27,20 @@ class Counters extends React.Component {
     };
 
     handleIncrement = counterId => {
+
         let counters = [...this.state.counters];
-        console.log(counters);
+
         let index = counters.indexOf(counterId)
+        
         let item = {...counters[index]};
+        
         item.value++;
-        counters[counterId] = item;
-        console.log(counters);
-        this.setState({counters: counters});
+
+        counters.splice(index,1,item);
+
+        //console.log(counters);
+
+        this.setState({ counters });
     };
 
     render() { 
